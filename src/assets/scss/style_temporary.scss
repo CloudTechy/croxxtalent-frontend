@@ -1,0 +1,30 @@
+/* src/assets/style/style_temporary.scss */
+
+// TEAM MATE, PLEASE WRITE YOUR STYLES HERE TO REDUCE GIT COLLABORATION CONFLICTS, 
+// THE TEAM LEADER WILL MIGRATE IT TO THE MAIN FILE.
+
+
+.cv-right{
+    margin: 0px;
+    margin-top: 20px;
+}
+button{
+    border-radius: 5px !important;
+}
+strong {
+font-weight: 200;
+}
+label.required:after {
+    color: red;
+    content: " *";
+    font-size: 16px;
+    position: relative;
+    top: 6px;
+    font-family: arial;
+}
+.bg-img {
+    background-image: url("../images/login-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

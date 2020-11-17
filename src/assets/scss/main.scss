@@ -1,0 +1,19 @@
+/* src/assets/scss/main.scss */
+
+@import "croxx/variables";
+@import "croxx/layout";
+@import "croxx/typography";
+@import "croxx/misc";
+@import "croxx/transitions";
+@import "croxx/customClasses";
+// Vuesax fixes and enhancments
+@import "croxx/fixesVuesax";
+// Tailwind Fixes
+@import "croxx/tailwindFix";
+@import "croxx/fixesVuesax";
+// frb radio btn
+@import "frp-radio-btn/style.scss";
+@import "frp-radio-btn/level.scss";
+
+// App Custom
+@import "./style.scss";
