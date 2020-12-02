@@ -213,14 +213,18 @@
                         placeholder="State"
                         autocomplete="off"
                         :class="{ 'is-invalid': validationContext.errors[0] }"
-                        :options="Object.values($store.state.countries.statesDataSet)"
+                        :options="
+                          Object.values($store.state.countries.statesDataSet)
+                        "
                         label="name"
                         :reduce="option => option.id"
                         append-to-body
                         :calculate-position="withPopper"
                       >
                         <template v-slot:no-options>
-                          <span v-if="$store.state.countries.loadingStatesDataSet">
+                          <span
+                            v-if="$store.state.countries.loadingStatesDataSet"
+                          >
                             Loading data, please wait.
                           </span>
                           <span v-else>

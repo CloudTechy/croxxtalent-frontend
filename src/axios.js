@@ -2,7 +2,7 @@
 import Cookies from "js-cookie";
 import axios from "axios";
 import config from "./config";
-console.log(process.env)
+console.log(process.env);
 const $axios = axios.create({
   baseURL: config.apiUrl, // Set api base url from .env
   // baseURL: "https://spacehub-croxxtalent-backend.herokuapp.com/v1",

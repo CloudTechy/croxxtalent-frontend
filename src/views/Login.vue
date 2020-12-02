@@ -109,6 +109,10 @@
                   <!-- eslint-disable-next-line -->
                   <b-alert variant="success" show>{{ success }}</b-alert>
                 </p>
+                <p v-if="regSuccess">
+                  <!-- eslint-disable-next-line -->
+                  <b-alert variant="success" show>{{ regSuccess }}</b-alert>
+                </p>
               </b-col>
             </b-row>
 
@@ -225,11 +229,16 @@ export default {
   },
 
   computed: {
-    ...mapState("auth", ["error", "success", "validationErrors"]),
+    ...mapState("auth", ["error", "success", "regSuccess", "regError", "validationErrors"]),
+    // ...mapState("auth", {
+    //   regError: state => state.regError,
+    //   regSuccess: state => state.regSuccess,
+    //   validationErrors: state => state.validationErrors
+    // })
   },
 
   mounted() {
-    this.$store.commit("auth/REMOVE_ERROR_SUCCESS");
+    // this.$store.commit("auth/REMOVE_ERROR_SUCCESS");
   },
 
   methods: {

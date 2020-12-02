@@ -322,6 +322,111 @@
                     </div>
                   </fieldset>
 
+                  <!-- Employer questions -->
+
+                  <fieldset v-else-if="formCurrentStep === 3">
+                    <h4 class="mt-4">
+                      Answer the following questions to complete your
+                      registration.
+                    </h4>
+                    <div class="center content-inputs mb-6">
+                      <ul class="leftx">
+                        <div class="">
+                          <md-field>
+                            <label for="">
+                              <span class="frb-title"
+                                >What's the name of your Organization?</span
+                              >
+                            </label>
+                            <md-input
+                              v-model="form.employer_org_name"
+                              type="text"
+                              md-counter="50"
+                              required
+                              maxlength="50"
+                              min="1"
+                            >
+                            </md-input>
+                          </md-field>
+                        </div>
+                        <div class="frb frb-primary">
+                          <md-field>
+                            <label for="">
+                              <span class="frb-title"
+                                >What are core services?</span
+                              >
+                            </label>
+                            <md-textarea
+                              v-model="form.employer_org_core_services"
+                              type="text"
+                              md-autogrow
+                              md-counter="500"
+                              required
+                              maxlength="500"
+                              min="1"
+                            >
+                            </md-textarea>
+                          </md-field>
+                        </div>
+                        <div class="frb frb-primary">
+                          <md-field>
+                            <label for="employer_org_size">
+                              <span class="frb-title"
+                                >What's the size of your organization?</span
+                              >
+                            </label>
+                            <md-select
+                              id="employer_org_size"
+                              v-model="form.employer_org_size"
+                              name="employer_org_size"
+                            >
+                              <md-option value="1 - 10">1 - 10</md-option>
+                              <md-option value="10 - 100">10 - 100</md-option>
+                              <md-option value="100 - 1000"
+                                >100 - 1000</md-option
+                              >
+                              <md-option value="1000 - 10000"
+                                >1000 - 10000</md-option
+                              >
+                            </md-select>
+                          </md-field>
+                        </div>
+                        <div class="frb frb-primary">
+                          <md-field>
+                            <label for="">
+                              <span class="frb-title"
+                                >What's the contact details of someone we can
+                                reach?</span
+                              >
+                            </label>
+                            <md-input
+                              v-model="form.employer_org_contact"
+                              type="text"
+                              md-counter="30"
+                              required
+                              maxlength="30"
+                              min="1"
+                            >
+                            </md-input>
+                          </md-field>
+                        </div>
+                      </ul>
+                    </div>
+                  </fieldset>
+                  <b-row
+                    v-if="formCurrentStep === 3"
+                    class="center content-inputs"
+                  >
+                    <b-col>
+                      <!-- eslint-disable-next-line -->
+                      <vs-button @click="formCurrentStep--" class="success auth-btn" size="meduim">Previous</vs-button>
+                    </b-col>
+                    <b-col>
+                      <!-- eslint-disable-next-line -->
+                      <vs-button :disabled="!form.type" class="primary auth-btn" button="submit" size="meduim" style="background-color:#0040a1 !important">Submit</vs-button>
+                    </b-col>
+                  </b-row>
+
                   <div
                     v-if="formCurrentStep === 1"
                     class="center content-inputs"
@@ -385,7 +490,11 @@ export default {
         email: "",
         password: "",
         accept_terms: false,
-        referral_code: null
+        referral_code: null,
+        employer_org_name: "",
+        employer_org_core_services: "",
+        employer_org_size: "",
+        employer_org_contact: ""
       }
     };
   },
@@ -418,7 +527,7 @@ export default {
       }
     });
   },
-
+  watch: {},
   mounted() {
     this.$store.commit("auth/REMOVE_ERROR_SUCCESS");
     // get referral code if any
@@ -427,9 +536,11 @@ export default {
       this.form.referral_code = Cookies.get(config.referralCodeStorageKey);
     }
   },
-
   methods: {
     register() {
+      if (this.form.type === "employer") {
+        this.formMaximumSteps = 3;
+      }
       if (this.formCurrentStep === this.formMaximumSteps) {
         let loader = this.$loading.show({}); // vue-loading-overlay option
         this.$store.dispatch("auth/register", this.form).then(() => {
@@ -451,7 +562,7 @@ export default {
             //     this.$router.replace({ name: "dashboard" });
             //   }
             // }
-            this.$router.replace({ name: "dashboard" });
+            this.$router.replace({ name: "login" });
           } else {
             this.formCurrentStep--;
             this.$refs.form.setErrors(this.validationErrors); // set VeeValidation error

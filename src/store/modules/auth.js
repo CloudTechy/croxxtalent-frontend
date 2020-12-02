@@ -250,13 +250,14 @@ const storeModule = {
       try {
         let response = await $http.post("/auth/register", payload);
         let responsePayload = response.data;
-        commit("LOGIN", {
-          accessToken: responsePayload.data.access_token,
-          accessTokenExpiresIn: responsePayload.data.expires_in,
-          accessTokenExpiresAt: responsePayload.data.expires_at
-        });
+        // commit("LOGIN", {
+        //   accessToken: responsePayload.data.access_token,
+        //   accessTokenExpiresIn: responsePayload.data.expires_in,
+        //   accessTokenExpiresAt: responsePayload.data.expires_at
+        // });
         commit("SET_USER", responsePayload.data.user);
         commit("SET_REG_SUCCESS", responsePayload.message);
+        return;
       } catch (error) {
         if (error && error.data) {
           let errorPayload = error.data;

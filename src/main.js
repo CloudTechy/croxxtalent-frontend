@@ -12,6 +12,23 @@ import i18n from "./i18n";
 // Config
 import config from "./config";
 
+//material vue
+import {
+  MdButton,
+  MdField,
+  MdMenu,
+  MdLayout,
+  MdList
+} from "vue-material/dist/components";
+import "vue-material/dist/vue-material.min.css";
+import "vue-material/dist/theme/default.css";
+
+Vue.use(MdButton);
+Vue.use(MdField);
+Vue.use(MdMenu);
+Vue.use(MdLayout);
+Vue.use(MdList);
+
 // BootstrapVue
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
