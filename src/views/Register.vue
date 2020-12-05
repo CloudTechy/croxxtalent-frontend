@@ -444,7 +444,7 @@
                     </b-col>
                     <b-col>
                       <!-- eslint-disable-next-line -->
-                      <vs-button :disabled="!form.type" class="primary auth-btn" button="submit" size="meduim" style="background-color:#0040a1 !important">Submit</vs-button>
+                      <vs-button :disabled="!form.type" class="primary auth-btn" button="submit" size="meduim" style="background-color:#0040a1 !important">{{form.type == "employer" ? "Next" : "Submit"}}</vs-button>
                     </b-col>
                   </b-row>
 
