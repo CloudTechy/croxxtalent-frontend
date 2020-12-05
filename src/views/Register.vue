@@ -334,7 +334,7 @@
                         <div class="">
                           <md-field>
                             <label for="">
-                              <span class="frb-title"
+                              <span class=""
                                 >What's the name of your Organization?</span
                               >
                             </label>
@@ -344,7 +344,7 @@
                               md-counter="50"
                               required
                               maxlength="50"
-                              min="1"
+                              class="border-0"
                             >
                             </md-input>
                           </md-field>
@@ -352,9 +352,7 @@
                         <div class="frb frb-primary">
                           <md-field>
                             <label for="">
-                              <span class="frb-title"
-                                >What are core services?</span
-                              >
+                              <span class="">What are core services?</span>
                             </label>
                             <md-textarea
                               v-model="form.employer_org_core_services"
@@ -363,7 +361,7 @@
                               md-counter="500"
                               required
                               maxlength="500"
-                              min="1"
+                              class="border-0"
                             >
                             </md-textarea>
                           </md-field>
@@ -371,7 +369,7 @@
                         <div class="frb frb-primary">
                           <md-field>
                             <label for="employer_org_size">
-                              <span class="frb-title"
+                              <span class=""
                                 >What's the size of your organization?</span
                               >
                             </label>
@@ -379,6 +377,7 @@
                               id="employer_org_size"
                               v-model="form.employer_org_size"
                               name="employer_org_size"
+                              class="border-0"
                             >
                               <md-option value="1 - 10">1 - 10</md-option>
                               <md-option value="10 - 100">10 - 100</md-option>
@@ -394,7 +393,7 @@
                         <div class="frb frb-primary">
                           <md-field>
                             <label for="">
-                              <span class="frb-title"
+                              <span class=""
                                 >What's the contact details of someone we can
                                 reach?</span
                               >
@@ -405,7 +404,7 @@
                               md-counter="30"
                               required
                               maxlength="30"
-                              min="1"
+                              class="border-0"
                             >
                             </md-input>
                           </md-field>
@@ -584,3 +583,11 @@ export default {
   }
 };
 </script>
+<style type="text/css">
+.md-select-value {
+  border: none !important;
+}
+#employer_org_size input {
+  border: none;
+}
+</style>
