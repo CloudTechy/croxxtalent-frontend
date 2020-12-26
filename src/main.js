@@ -29,6 +29,11 @@ Vue.use(MdMenu);
 Vue.use(MdLayout);
 Vue.use(MdList);
 
+//jquery
+// const { JSDOM } = require("jsdom");
+// const { vueWindow } = new JSDOM("");
+// const window.$ = require("jquery")(vueWindow);
+
 // BootstrapVue
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
@@ -36,6 +41,10 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
+
+//install vue-tel-input
+import vueTelInput from "vue-tel-input";
+Vue.use(vueTelInput);
 
 // Vuesax Component Framework
 import Vuesax from "vuesax";

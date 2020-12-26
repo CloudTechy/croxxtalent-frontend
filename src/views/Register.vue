@@ -226,6 +226,7 @@
                       >
                         <b-form-checkbox
                           v-model="form.accept_terms"
+                          s
                           :value="true"
                           :unchecked-value="false"
                           size="lg"
@@ -391,23 +392,31 @@
                           </md-field>
                         </div>
                         <div class="frb frb-primary">
-                          <md-field>
+                          <div class="form-row">
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                What's the contact details of someone we can
+                                reach?
+                              </div>
+                            </div>
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                <vue-tel-input
+                                  v-model="form.employer_org_contact"
+                                >
+                                </vue-tel-input>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <md-field>
                             <label for="">
                               <span class=""
                                 >What's the contact details of someone we can
                                 reach?</span
                               >
                             </label>
-                            <md-input
-                              v-model="form.employer_org_contact"
-                              type="text"
-                              md-counter="30"
-                              required
-                              maxlength="30"
-                              class="border-0"
-                            >
-                            </md-input>
-                          </md-field>
+
+                          </md-field> -->
                         </div>
                       </ul>
                     </div>
@@ -464,9 +473,6 @@
     </b-container>
   </layout-auth>
 </template>
-
-<style></style>
-
 <script>
 import LayoutAuth from "../layouts/LayoutAuth";
 import { mapState } from "vuex";
@@ -477,7 +483,6 @@ export default {
   components: {
     LayoutAuth
   },
-
   data() {
     return {
       formCurrentStep: 1,
@@ -526,7 +531,6 @@ export default {
       }
     });
   },
-  watch: {},
   mounted() {
     this.$store.commit("auth/REMOVE_ERROR_SUCCESS");
     // get referral code if any
@@ -587,7 +591,44 @@ export default {
 .md-select-value {
   border: none !important;
 }
-#employer_org_size input {
-  border: none;
+.intl-tel-input {
+  display: table-cell;
+}
+.intl-tel-input .selected-flag {
+  z-index: 4;
+}
+.intl-tel-input .country-list {
+  z-index: 5;
+}
+.input-group .intl-tel-input .form-control {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 0;
+}
+.iti-flag {
+  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.3/img/flags.png");
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2 / 1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+  .iti-flag {
+    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.3/img/flags@2x.png");
+  }
+}
+.input-group .form-control,
+.intl-tel-input {
+  width: 100%;
+}
+.vue-tel-input {
+  width: 100% !important;
+  border: none !important;
+}
+.form-row {
+  border-bottom: 1px solid gray;
 }
 </style>
