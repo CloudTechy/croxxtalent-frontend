@@ -46,6 +46,11 @@ Vue.use(IconsPlugin);
 import vueTelInput from "vue-tel-input";
 Vue.use(vueTelInput);
 
+//vue tag-input
+import VoerroTagsInput from "@voerro/vue-tagsinput";
+Vue.component("tags-input", VoerroTagsInput);
+import "@voerro/vue-tagsinput/dist/style.css"; // vue-tagsinput styles
+
 // Vuesax Component Framework
 import Vuesax from "vuesax";
 import "material-icons/iconfont/material-icons.css"; // Material Icons

@@ -325,10 +325,14 @@
 
                   <!-- Employer questions -->
 
-                  <fieldset v-else-if="formCurrentStep === 3">
+                  <fieldset
+                    v-else-if="
+                      formCurrentStep === 3 && form.type === 'employer'
+                    "
+                  >
                     <h4 class="mt-4">
-                      Answer the following questions to complete your
-                      registration.
+                      Provide the following questions to complete your
+                      registration as an employer.
                     </h4>
                     <div class="center content-inputs mb-6">
                       <ul class="leftx">
@@ -395,6 +399,35 @@
                           <div class="form-row">
                             <div class="form-group col">
                               <div class="input-group input-group-lg">
+                                What are the locations of your organisation?
+                              </div>
+                            </div>
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                <tags-input
+                                  v-model="EmployerLocationTags"
+                                  element-id="EmployerLocationTags"
+                                  placeholder="Add a location"
+                                  add-tags-on-space
+                                  add-tags-on-comma
+                                  :existing-tags="[
+                                    {
+                                      key: 'web-development',
+                                      value: 'Nigeria'
+                                    },
+                                    { key: 'php', value: 'europe' },
+                                    { key: 'javascript', value: 'Canada' }
+                                  ]"
+                                  :typeahead="true"
+                                ></tags-input>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="frb frb-primary">
+                          <div class="form-row">
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
                                 What's the contact details of someone we can
                                 reach?
                               </div>
@@ -421,6 +454,148 @@
                       </ul>
                     </div>
                   </fieldset>
+
+                  <!-- Affiliate questions -->
+
+                  <fieldset
+                    v-else-if="
+                      formCurrentStep === 3 && form.type === 'affiliate'
+                    "
+                  >
+                    <h4 class="mt-4">
+                      Provide the following questions to complete your
+                      registration as an affiliate.
+                    </h4>
+                    <div class="center content-inputs mb-6">
+                      <ul class="leftx">
+                        <div class="">
+                          <md-field>
+                            <label for="">
+                              <span class=""
+                                >What's the name of your organization?</span
+                              >
+                            </label>
+                            <md-input
+                              v-model="form.employer_org_name"
+                              type="text"
+                              md-counter="50"
+                              required
+                              maxlength="50"
+                              class="border-0"
+                            >
+                            </md-input>
+                          </md-field>
+                        </div>
+
+                        <div class="frb frb-primary">
+                          <div class="form-row">
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                What's the contact details of someone we can
+                                reach?
+                              </div>
+                            </div>
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                <vue-tel-input
+                                  v-model="form.employer_org_contact"
+                                >
+                                </vue-tel-input>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="frb frb-primary">
+                          <div class="form-row">
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                What are the locations of your organisation?
+                              </div>
+                            </div>
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                <tags-input
+                                  v-model="AffiliateLocationTags"
+                                  element-id="AffiliateLocationTags"
+                                  placeholder="Add a location"
+                                  add-tags-on-space
+                                  add-tags-on-comma
+                                  :existing-tags="[
+                                    {
+                                      key: 'web-development',
+                                      value: 'Nigeria'
+                                    },
+                                    { key: 'php', value: 'Europe' },
+                                    { key: 'javascript', value: 'Canada' }
+                                  ]"
+                                  :typeahead="true"
+                                ></tags-input>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="frb frb-primary">
+                          <div class="form-row">
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                Other organizations you have worked with?
+                              </div>
+                            </div>
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                <tags-input
+                                  v-model="AffiliateOrganisationTags"
+                                  element-id="AffiliateOrganisationTags"
+                                  placeholder="Add organisation"
+                                  add-tags-on-space
+                                  add-tags-on-comma
+                                  :existing-tags="[
+                                    {
+                                      key: 'web-development',
+                                      value: 'Facebook'
+                                    },
+                                    { key: 'php', value: 'IBM' },
+                                    { key: 'javascript', value: 'Microsoft' }
+                                  ]"
+                                  :typeahead="true"
+                                ></tags-input>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="frb frb-primary">
+                          <md-field>
+                            <label for="employer_org_size">
+                              <span class=""
+                                >Other organizations you have worked with?</span
+                              >
+                            </label>
+                            <div class="form-group col">
+                              <div class="input-group input-group-lg">
+                                <tags-input
+                                  v-model="selectedTags"
+                                  element-id="tags"
+                                  placeholder="Add organisation"
+                                  add-tags-on-space
+                                  add-tags-on-comma
+                                  :existing-tags="[
+                                    {
+                                      key: 'web-development',
+                                      value: 'Microsoft'
+                                    },
+                                    { key: 'php', value: 'IBM' },
+                                    { key: 'javascript', value: 'Facebook' }
+                                  ]"
+                                  :typeahead="true"
+                                ></tags-input>
+                              </div>
+                            </div>
+                          </md-field>
+                        </div> -->
+                      </ul>
+                    </div>
+                  </fieldset>
+
                   <b-row
                     v-if="formCurrentStep === 3"
                     class="center content-inputs"
@@ -452,7 +627,7 @@
                     </b-col>
                     <b-col>
                       <!-- eslint-disable-next-line -->
-                      <vs-button :disabled="!form.type" class="primary auth-btn" button="submit" size="meduim" style="background-color:#0040a1 !important">{{form.type == "employer" ? "Next" : "Submit"}}</vs-button>
+                      <vs-button :disabled="!form.type" class="primary auth-btn" button="submit" size="meduim" style="background-color:#0040a1 !important">{{form.type == "employer" || form.type == "affiliate"  ? "Next" : "Submit"}}</vs-button>
                     </b-col>
                   </b-row>
 
@@ -487,6 +662,9 @@ export default {
     return {
       formCurrentStep: 1,
       formMaximumSteps: 2,
+      AffiliateOrganisationTags: [],
+      AffiliateLocationTags: [],
+      EmployerLocationTags: [],
       form: {
         type: "",
         first_name: "",
@@ -498,7 +676,8 @@ export default {
         employer_org_name: "",
         employer_org_core_services: "",
         employer_org_size: "",
-        employer_org_contact: ""
+        employer_org_contact: "",
+        employer_org_locations: ""
       }
     };
   },
@@ -541,7 +720,7 @@ export default {
   },
   methods: {
     register() {
-      if (this.form.type === "employer") {
+      if (this.form.type === "employer" || this.form.type === "affiliate") {
         this.formMaximumSteps = 3;
       }
       if (this.formCurrentStep === this.formMaximumSteps) {
@@ -630,5 +809,17 @@ export default {
 }
 .form-row {
   border-bottom: 1px solid gray;
+}
+.tags-input-wrapper-default {
+  padding: 0.25em 0.25em !important;
+}
+.tags-input-wrapper-default input {
+  border: none !important;
+  width: 100% !important;
+  padding-left: 7px !important;
+}
+.tags-input-root {
+  width: 100% !important;
+  margin-left: 0.85em !important;
 }
 </style>
